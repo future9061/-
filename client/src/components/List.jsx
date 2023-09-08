@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Button from "react-bootstrap/Button";
 
 function List({ contentList }) {
   const [text, setText] = useState("");
@@ -12,7 +13,7 @@ function List({ contentList }) {
     axios
       .post("/api/test", body)
       .then((res) => {
-        console.log(res.data.text);
+        console.log(res);
         setText(res.data.text);
       })
       .catch((err) => {
