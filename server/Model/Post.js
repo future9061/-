@@ -3,8 +3,8 @@ const mongoose = require('mongoose');
 const postSchema = new mongoose.Schema({
   title: String,
   content: String
-}, { collation: "Posts" });
+}, { collation: "posts" });
 
-const Post = mongoose.model('Post', postSchema);
+const Post = mongoose.model('posts', postSchema);
 
 module.exports = { Post }
