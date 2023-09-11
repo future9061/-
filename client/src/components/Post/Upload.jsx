@@ -3,7 +3,7 @@ import { UploadButtonDiv, UploadDiv, UploadForm } from "../../Style/UploadCSS";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-function Upload({ contentList, setContentList }) {
+function Upload() {
   const [content, setContent] = useState("");
   const [title, setTitle] = useState("");
   const navigate = useNavigate();

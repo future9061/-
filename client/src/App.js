@@ -3,7 +3,8 @@ import { Routes, Route } from "react-router-dom";
 import Heading from '../src/components/Heading'
 import List from './components/Post/List';
 import Upload from './components/Post/Upload';
-import { useState } from 'react';
+import Detail from './components/Post/Detail';
+
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         <Route path='/' element={<List />} />
         <Route path='/upload' element={< Upload />} />
+        <Route path='/post/:postNum' element={< Detail />} />
       </Routes>
     </>
   );
