@@ -21,7 +21,12 @@ box-shadow:0px 19px 38px rgba(0,0,0,0.03),0px 15px 12px rgba(0,0,0,0.1);
 a{
   color:black;
   text-decoration:none;
-}`
+}
+img{
+  width:100%;
+  height:auto;
+}
+`
 
 const DetaliBtn = styled.div`
 text-align:end;

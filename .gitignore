@@ -1,6 +1,18 @@
+server/config/dev.js
 
+server/package.json
 
-/node_modules
+server/package-lock.json
+
+server/node_modules
+
+client/package.json
+
+client/package-lock.json
+
+client/node_modules
+
+client/build
 
 .env.local
 .env.development.local

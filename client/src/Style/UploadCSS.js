@@ -10,17 +10,17 @@ width:80%;
 margin:0 auto;
 display:flex;
 flex-direction:column;
-  input {
+  #form {
     border-radius:10px;
     border:1px solid #c6c6c6;
     padding:10px;
+    margin-bottom:10px;
     &:active,
     &:focus{
       outline:none
-    }
   }
   textarea{
-    min-height:350px;
+    min-height:400px;
     resize:none;
     border-radius:10px;
     border:1px solid #c6c6c6;
@@ -63,6 +63,16 @@ button{
     background-color:white;
     color:black;
     border:1px solid black;
+  }
+}
+.cancle{
+  margin-left:10px;
+  background:red;
+
+  &:hover{
+    background:white;
+    border:1px solid red;
+    color:red;
   }
 }
 `

@@ -1,17 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { UploadButtonDiv, UploadDiv, UploadForm } from "../../Style/UploadCSS";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import ImgUpload from "./ImgUpload";
 
 function Upload() {
   const [content, setContent] = useState("");
   const [title, setTitle] = useState("");
+  const [image, setImage] = useState("");
   const navigate = useNavigate();
 
   const onSubmit = () => {
     let body = {
       title: title,
       content: content,
+      image: image,
     };
 
     if (title === "" || content === "") {
@@ -38,16 +41,17 @@ function Upload() {
       <UploadForm>
         <label htmlFor="title">제목</label>
         <input
-          id="title"
+          id="form"
           type="text"
           value={title}
           onChange={(e) => {
             setTitle(e.currentTarget.value);
           }}
         />
+        <ImgUpload setImage={setImage} />
         <label htmlFor="content">내용</label>
         <textarea
-          id="content"
+          id="form"
           type="text"
           value={content}
           onChange={(e) => {
