@@ -1,16 +1,20 @@
 import axios from "axios";
 import React from "react";
 import Form from "react-bootstrap/Form";
+import { useDispatch } from "react-redux";
+import { changeImg } from "../../store/ImgSlice";
 
-function ImgUpload(props) {
+function ImgUpload() {
+  const dispatch = useDispatch();
+
   const FileUpload = (e) => {
     var formData = new FormData();
     formData.append("file", e.target.files[0]);
 
     axios
-      .post("api/post/image/", formData)
+      .post(`/api/post/image`, formData)
       .then((res) => {
-        props.setImage(res.data.filePath);
+        dispatch(changeImg(res.data.filePath));
       })
       .catch((err) => {
         console.log(err);

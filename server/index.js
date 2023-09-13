@@ -3,8 +3,7 @@ const path = require("path")
 const app = express()
 const port = 5000
 const mongoose = require('mongoose')
-const config = require("./config/key.js")
-
+require('dotenv').config();
 
 app.use(express.static(path.join(__dirname, '../client/build')))
 app.use("/image", express.static('./image'))
@@ -12,9 +11,10 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 app.use("/api/post", require("./Router/postRouter"))
+app.use("/api/user", require("./Router/userRouter"))
 
 app.listen(port, () => {
-  mongoose.connect(config.mongoURI)
+  mongoose.connect(process.env.MONGDB_URI)
     .then(() => {
       console.log(`localhost ${port} 실행 중`)
       console.log(`connecting MongoDB...`)

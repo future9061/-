@@ -3,18 +3,19 @@ import { UploadButtonDiv, UploadDiv, UploadForm } from "../../Style/UploadCSS";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import ImgUpload from "./ImgUpload";
+import { useSelector } from "react-redux";
 
 function Upload() {
   const [content, setContent] = useState("");
   const [title, setTitle] = useState("");
-  const [image, setImage] = useState("");
   const navigate = useNavigate();
+  const ImgState = useSelector((state) => state.ImgState);
 
   const onSubmit = () => {
     let body = {
       title: title,
       content: content,
-      image: image,
+      image: ImgState,
     };
 
     if (title === "" || content === "") {
@@ -48,7 +49,7 @@ function Upload() {
             setTitle(e.currentTarget.value);
           }}
         />
-        <ImgUpload setImage={setImage} />
+        <ImgUpload />
         <label htmlFor="content">내용</label>
         <textarea
           id="form"

@@ -8,7 +8,9 @@ function Heading() {
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+        <Navbar.Brand href="#home">
+          <Link to="/">커뮤니티</Link>
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
@@ -19,7 +21,7 @@ function Heading() {
               <Link to="/upload">upload</Link>
             </Nav.Link>
             <Nav.Link>
-              <Link to="/">list</Link>
+              <Link to="/login">로그인</Link>
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>

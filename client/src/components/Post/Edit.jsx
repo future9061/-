@@ -4,6 +4,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { UploadButtonDiv, UploadDiv, UploadForm } from "../../Style/UploadCSS";
 import Detail from "./Detail";
 import ImgUpload from "./ImgUpload";
+import { useSelector } from "react-redux";
 
 function Edit() {
   let params = useParams();
@@ -12,7 +13,13 @@ function Edit() {
   let [flag, setFlag] = useState(false);
   const [content, setContent] = useState("");
   const [title, setTitle] = useState("");
-  const [image, setImage] = useState("");
+
+  const ImgState = useSelector((state) => state.ImgState);
+
+  // useEffect(() => {
+  //   console.log("에딧에서 파일", editImage);
+  // }, [setEditImage]);
+
   useEffect(() => {
     let body = {
       postNum: params.postNum,
@@ -35,17 +42,14 @@ function Edit() {
     setContent(postInfor.content);
   }, [postInfor]);
 
-  useEffect(() => {
-    console.log("image", image, "postInfor", postInfor);
-  }, [setImage]);
-
   const onSubmit = () => {
     let body = {
       title: title,
       content: content,
       postNum: params.postNum,
-      image: image,
+      image: ImgState,
     };
+
     if (title === "" || content === "") {
       alert("모든 항목을 채워주세요");
     }
@@ -64,9 +68,7 @@ function Edit() {
         .catch((err) => console.log(err));
     }
   };
-  //왜 edit 에서는 imgupload가 404 에로 나는지 알았ㅇ음
-  //edit은 url뒤에 고유의 postNum이 붙으니까!
-  //해결방법은 고민해봐야할듯
+
   return (
     <UploadDiv>
       <UploadForm>
@@ -79,7 +81,7 @@ function Edit() {
             setTitle(e.currentTarget.value);
           }}
         />
-        <ImgUpload setImage={setImage} />
+        <ImgUpload />
         <label htmlFor="content">내용</label>
         <textarea
           id="content"
