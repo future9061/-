@@ -22,6 +22,7 @@ function List() {
     <>
       <ListDiv>
         {postList.map((post, idx) => {
+          console.log(postList);
           return (
             <ListItem key={idx}>
               <Link to={`/post/${post.postNum}`}>

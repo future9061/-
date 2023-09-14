@@ -10,12 +10,21 @@ function Upload() {
   const [title, setTitle] = useState("");
   const navigate = useNavigate();
   const ImgState = useSelector((state) => state.ImgState);
+  const user = useSelector((state) => state.user);
+
+  useEffect(() => {
+    if (!user.accessToken) {
+      alert("로그인 해주세요");
+      navigate("/login");
+    }
+  }, []);
 
   const onSubmit = () => {
     let body = {
       title: title,
       content: content,
       image: ImgState,
+      uid: user.uid,
     };
 
     if (title === "" || content === "") {

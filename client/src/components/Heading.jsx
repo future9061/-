@@ -1,10 +1,21 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import { useSelector } from "react-redux";
+import firebase from "../firebase.js";
 
 function Heading() {
+  const user = useSelector((state) => state.user);
+  const navigate = useNavigate();
+
+  const logout = (e) => {
+    e.preventDefault();
+    firebase.auth().signOut();
+    navigate("/");
+  };
+
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
@@ -21,7 +32,18 @@ function Heading() {
               <Link to="/upload">upload</Link>
             </Nav.Link>
             <Nav.Link>
-              <Link to="/login">로그인</Link>
+              {user.uid !== "" ? (
+                <Link
+                  to="/login"
+                  onClick={(e) => {
+                    logout(e);
+                  }}
+                >
+                  로그아웃
+                </Link>
+              ) : (
+                <Link to="/login">로그인</Link>
+              )}
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>

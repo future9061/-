@@ -2,7 +2,7 @@ import axios from "axios";
 import React from "react";
 import Form from "react-bootstrap/Form";
 import { useDispatch } from "react-redux";
-import { changeImg } from "../../store/ImgSlice";
+import { changeImg } from "../../Reducer/ImgSlice.js";
 
 function ImgUpload() {
   const dispatch = useDispatch();

@@ -1,8 +1,7 @@
 import axios from "axios";
-import React, { useCallback, useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { UploadButtonDiv, UploadDiv, UploadForm } from "../../Style/UploadCSS";
-import Detail from "./Detail";
 import ImgUpload from "./ImgUpload";
 import { useSelector } from "react-redux";
 
@@ -15,10 +14,6 @@ function Edit() {
   const [title, setTitle] = useState("");
 
   const ImgState = useSelector((state) => state.ImgState);
-
-  // useEffect(() => {
-  //   console.log("에딧에서 파일", editImage);
-  // }, [setEditImage]);
 
   useEffect(() => {
     let body = {
